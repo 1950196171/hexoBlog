@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="王一凡的博客">
+    <meta name="keyword" content="博客">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Docker 基本使用 - Wyafana的博客 | Wyafana&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Happy New Year To You </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/\ws3.sinaimg.cn/large/005BYqpgly1fyybvg7oxuj30b408cjs4.jpg">
+        </div>
+        <div class="name">
+            <i>Wyafana</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#docker"><span class="toc-text">docker</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#特点"><span class="toc-text">特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-化"><span class="toc-text">Docker 化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用-Docker"><span class="toc-text">使用 Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#几个概念"><span class="toc-text">几个概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用指令"><span class="toc-text">常用指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建容器"><span class="toc-text">创建容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进入容器"><span class="toc-text">进入容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#链接容器"><span class="toc-text">链接容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#挂载硬盘"><span class="toc-text">挂载硬盘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复制文件"><span class="toc-text">复制文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#综合案例、使用-Docker-搭建-LNMP-环境"><span class="toc-text">综合案例、使用 Docker 搭建 LNMP 环境</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx"><span class="toc-text">Nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方案"><span class="toc-text">方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LNMP-模型图"><span class="toc-text">LNMP 模型图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#两个问题"><span class="toc-text">两个问题</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> Happy New Year To You </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Docker 基本使用
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-06-17 19:56:00</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><p>Docker 是一个开源的应用容器引擎。</p>
+<p><img src="http://f.hiphotos.baidu.com/image/%70%69%63/item/d50735fae6cd7b8933b62508022442a7d8330e66.jpg" alt=""></p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>环境一次安装，到处运行</li>
+</ul>
+<p>我们可以把配置好的环境制作成一个镜像，这个镜像就可以在所有安装了 Docker 的机器上直接运行。当我们需要为几台、几十台甚至几百台服务器安装环境时，我们只需要制作一个镜像，然后所有服务器就可以使用这个镜像启动服务了。</p>
+<ul>
+<li>与虚拟机的关系</li>
+</ul>
+<p>Docker 是<code>容器技术</code>，和虚拟机非常像，都可以在主机上隔离出多个独立的子系统，它们最大的区别在于虚拟机是从主机中完全隔离出一个系统来，而容器技术和主机是共享系统内核的。</p>
+<p><img src="http://e.hiphotos.baidu.com/image/%70%69%63/item/d0c8a786c9177f3ee3fce2867dcf3bc79e3d5674.jpg" alt=""></p>
+<p>由于 Docker 与主机共享内核，所以有以下优势：</p>
+<p>1、速度更快</p>
+<p>​    Docker不停地给大家宣传，”虚拟机需要数分钟启动，而Docker容器只需要50毫秒”。</p>
+<p>2、更加轻量</p>
+<p>​    虚拟机中每个都是一套独立的系统，这就使得每个虚拟机都非常大，而 Docker 使用了分层的技术，不同的镜像之间可以同享相同的层，这使得容器尺寸很小。</p>
+<p>3、更节省资源</p>
+<p>​    启动一个虚拟机，就要启动它内部的操作系统，这非常消耗资源，一台电脑上同时开启3~10个虚拟机电脑就已经完全跑不动了。</p>
+<p>​    而 Docker 是共享主机内核，所以启动一个 Docker 就和启动一个普通的程序一样，所以我们可以同时在电脑上开启上千个 Docker 容器。</p>
+<h2 id="Docker-化"><a href="#Docker-化" class="headerlink" title="Docker 化"></a>Docker 化</h2><p>有了 Docker 之后，我们就可以将我们的程序 Docker 化。</p>
+<p>Docker 化就是指将开发的系统制作成一个镜像，当要要新的机器上部署该项目时，只需要拉取镜像然后就可以直接创建容器来运行了，这样就省了重新安装运行环境的步骤了（在一台新的机器上搭建运行环境是非常麻烦的事情）。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>Docker 可以安装、运行在常见的 Linux 系统上，而对于 Windows 和 Mac 系统也有办法安装上。</p>
+<p>Windows：如果是 Windows10专业版，可以直接安装，如果是老的版本需要安装Docker虚拟机。</p>
+<p>安装之后，可以在命令行中执行 <code>docker</code> 指令：</p>
+<p><img src="http://f.hiphotos.baidu.com/image/%70%69%63/item/eaf81a4c510fd9f9c2664ce2282dd42a2934a4c3.jpg" alt=""></p>
+<h1 id="使用-Docker"><a href="#使用-Docker" class="headerlink" title="使用 Docker"></a>使用 Docker</h1><h2 id="几个概念"><a href="#几个概念" class="headerlink" title="几个概念"></a>几个概念</h2><p>镜像（image）：已经打包好的 Docker 应用，有点类似于一个程序的安装包。</p>
+<p>镜像仓库：存储镜像的服务器。</p>
+<p>容器：有了镜像我们就可以创建容器了，容器就是运行着的镜像，一个镜像可以同时创建多个容器，容器之间的隔离的。</p>
+<p><img src="http://f.hiphotos.baidu.com/image/%70%69%63/item/e7cd7b899e510fb3a2276e1cd433c895d1430c7a.jpg" alt=""></p>
+<h2 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h2><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>docker images</td>
+<td>查看已下载的镜像</td>
+</tr>
+<tr>
+<td>docker rmi 镜像名称:标签名</td>
+<td>删除已下载的镜像</td>
+</tr>
+<tr>
+<td>docker search 镜像</td>
+<td>从官方仓库（hub.docker.com）查找镜像</td>
+</tr>
+<tr>
+<td>docker pull 镜像名称:标签名</td>
+<td>标签名默认是 latest，代表最新版本。</td>
+</tr>
+<tr>
+<td>docker run</td>
+<td>创建容器</td>
+</tr>
+<tr>
+<td>docker ps</td>
+<td>列出运行中的容器（运行中）</td>
+</tr>
+<tr>
+<td>docker ps -a</td>
+<td>列出未运行的容器</td>
+</tr>
+<tr>
+<td>docker rm 容器名称</td>
+<td>删除停止的容器</td>
+</tr>
+<tr>
+<td>docker rm -f 容器名称</td>
+<td>删除运行中的容器</td>
+</tr>
+<tr>
+<td>docker start 容器名称</td>
+<td>启动容器</td>
+</tr>
+<tr>
+<td>docker stop 容器名称</td>
+<td>停止容器</td>
+</tr>
+<tr>
+<td>docker restart 容器名称</td>
+<td>重启容器</td>
+</tr>
+<tr>
+<td>docker exec</td>
+<td>执行容器中的指令</td>
+</tr>
+</tbody>
+</table>
+<h2 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h2><p>下载了镜像之后，我们就可以通过镜像来创建容器，创建容器时常用的参数是：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">run</span> <span class="comment">--name 容器名称 -d -p 主机端口:容器内端口 -e 环境变量 --link 其它容器名:容器中别名 镜像名称:标签名</span></span><br></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<p>–name：指定容器名称</p>
+<p>-d：容器在后台运行</p>
+<p>-p：绑定端口号，容器内部的端口号无法在外部访问，必须经过绑定之后才可以访问</p>
+<p>–link：连接其它容器，当要访问其它容器中的内容时，需要先链接才可以使用</p>
+<p>-e：设置容器中的环境变量</p>
+<p>示例：创建一个 MySQL 容器，密码是123123，绑定本地 33306 端口到容器中 3306 端口：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="builtin-name">run</span> --name mysql001 -d -p 33306:3306 -e <span class="attribute">MYSQL_ROOT_PASSWORD</span>=123123 mysql:5.7.24</span><br></pre></td></tr></table></figure>
+<p>说明：MYSQL_ROOT_PASSWORD 环境变量用来设置这个容器中 MySQL 的密码</p>
+<p>创建之后，会启动这个容器，如果启动成功，就可以使用 <code>docker ps</code> 指令查看到：</p>
+<p><img src="http://h.hiphotos.baidu.com/image/%70%69%63/item/1ad5ad6eddc451da1e4f1560bbfd5266d11632fb.jpg" alt=""></p>
+<p>启动之后，这个容器内部就运行了 MySQL 服务器，在容器内部监听的是 3306 端口，我们已经将这个端口绑定到了主机的 33306 端口上，所以我们在主机上可以使用 33306 端口连接：</p>
+<p><img src="http://a.hiphotos.baidu.com/image/%70%69%63/item/b03533fa828ba61ed059d1a44c34970a314e5981.jpg" alt=""></p>
+<h2 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h2><p>有时我们需要进入到一个容器内部去操作这个容器，这时我们可以使用 <code>docker exec</code> 指令来实现。</p>
+<p>docker exec 指令可以执行一个运行着的容器中的命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it 容器名称 命令</span><br></pre></td></tr></table></figure>
+<p>我们可以通过执行 <code>bash</code> 指令进入容器：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mysql001 bash</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mysql001 /bin/sh</span><br></pre></td></tr></table></figure>
+<p>-it：以实时交互的形式运行（和 -d 正好相反）</p>
+<p>执行之后就进入到了容器中，然后我们输入的命令是在容器中执行的</p>
+<p><img src="http://a.hiphotos.baidu.com/image/%70%69%63/item/e850352ac65c10387bb2d749bf119313b17e8968.jpg" alt=""></p>
+<p>执行 <code>exit</code> 指令可以退出容器。</p>
+<h2 id="链接容器"><a href="#链接容器" class="headerlink" title="链接容器"></a>链接容器</h2><p>Docker 推荐我们一个容器中只运行一个主要的应用程序，比如，我们要运行一个 PHP + MySQL 的程序，那么我们应该把 PHP 和 MySQL 放到两个容器中：</p>
+<p><img src="http://f.hiphotos.baidu.com/image/%70%69%63/item/b3119313b07eca80487a216c9c2397dda1448339.jpg" alt=""></p>
+<p>默认情况下，容器之间是不能直接通信的，如果要通信必须在创建 PHP 容器时使用 <code>--link</code> 参数建立和 MySQL 容器的链接：</p>
+<p><img src="http://b.hiphotos.baidu.com/image/%70%69%63/item/09fa513d269759eec4067840bffb43166c22dfe3.jpg" alt=""></p>
+<p>建立连接的参数说明：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--link 要连接的容器的名称 : 别名</span></span><br></pre></td></tr></table></figure>
+<p>在容器中可以使用别名来访问连接的容器。</p>
+<p>比如，我们现在运行了一个叫做 <code>mysql001</code> 的容器，现在我们要创建一个 PHP 容器并和 MySQL 容器建立链接，指令应该是：</p>
+<p>创建一个 PHP 容器，并且设置和 mysql001 容器建立连接，在 PHP 容器中连接的别名是 mysql</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">run</span> <span class="comment">--name php001 -d --link mysql001:mysql            php</span></span><br></pre></td></tr></table></figure>
+<p>创建了链接之后，就可以在容器中使用别名来通信了：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 连接 mysql001 容器中的 MySQL 服务器</span></span><br><span class="line">$pdo = <span class="keyword">new</span> PDO(<span class="string">'mysql:host=mysql:3306;dbname=xxx'</span>, <span class="string">'root'</span>, <span class="string">'123123'</span>)</span><br></pre></td></tr></table></figure>
+<p>扩展：我们可以同时添加多个 –link 来同时连接多个容器，比如同时连接mysq001和redis001两个容器：</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">docker</span> <span class="comment">run</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">name</span> <span class="comment">php001</span> <span class="literal">-</span><span class="comment">d</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">link</span> <span class="comment">mysql001:mysql</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">link</span> <span class="comment">redis001:redis</span> <span class="comment">php</span></span><br></pre></td></tr></table></figure>
+<p>示例：安装 wordpress（一个开源的使用 PHP+MYQS 开发的内容管理系统 ）</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">run</span> <span class="comment">--name wordpress --link mysql001:mysql -p 8080:80 -d wordpress</span></span><br></pre></td></tr></table></figure>
+<p>创建 wordpress 容器时，发现本地没有镜像就会自动下载最新的镜像，下载完之后就创建了容器，然后我们就可以在浏览器中访问 8080 端口：</p>
+<p><img src="http://c.hiphotos.baidu.com/image/%70%69%63/item/d50735fae6cd7b8934d92208022442a7d8330e87.jpg" alt=""></p>
+<p>这样，我们就使用部署 wordpress 到我们的电脑上了。</p>
+<h2 id="挂载硬盘"><a href="#挂载硬盘" class="headerlink" title="挂载硬盘"></a>挂载硬盘</h2><p>问题一、数据是保存在容器里的，如果容器删除了数据也就删除了。</p>
+<p>问题二、每次要修改容器时，必须要进入到容器中去修改，比如要修改my.cnf。</p>
+<p>为了能够保存（持久化）数据以及共享容器间的数据，Docker 提出了 Volume 的概念。</p>
+<p>可以使用 <code>-v</code> 这个参数，将容器中的一个目录或者文件 和主机上的目录和文件进行绑定，绑定之后，修改主机上的这个文件就相当于修改了容器中的文件，删除容器之后，绑定的目录和文件还在主机（不会被删除）。</p>
+<p>为了实现主机和容器之间的数据共享，我们可以在创建容器时添加 <code>-v</code> 参数：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="builtin-name">run</span> <span class="built_in">..</span>. -v 主机目录:容器中的目录 <span class="built_in">..</span>.</span><br></pre></td></tr></table></figure>
+<p>示例：创建 mysql 容器并将数据目录挂载到主机：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mysql002 -d -v <span class="regexp">/Users/</span>wyl<span class="regexp">/Works/</span>code<span class="regexp">/docker-volume-data/</span><span class="string">testmysql:</span><span class="regexp">/var/</span>lib/mysql -p <span class="number">33307</span>:<span class="number">3306</span> -e MYSQL_ROOT_PASSWORD=<span class="number">123123</span> <span class="string">mysql:</span><span class="number">5.7</span><span class="number">.24</span></span><br></pre></td></tr></table></figure>
+<p>示例：启动一个 Nginx 服务器并将 nginx 的主目录搭载到主机上</p>
+<p>1、下载 nginx</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">docker</span> <span class="selector-tag">pull</span> <span class="selector-tag">nginx</span><span class="selector-pseudo">:1.15.6-alpine</span></span><br></pre></td></tr></table></figure>
+<p>2、到容器中查看网站根目录的路径</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">run</span> <span class="comment">--name testnginx -d nginx:1.15.6-alpine   ## 创建容器</span></span><br><span class="line">docker exec -<span class="keyword">it</span> testnginx /bin/sh                    <span class="comment">## 进入容器</span></span><br></pre></td></tr></table></figure>
+<p>在容器中使用 vi 编辑器查看配置文件：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span><span class="keyword">default</span>.conf</span><br></pre></td></tr></table></figure>
+<p>查看网站根目录是 <code>usr/share/nginx/html</code>。</p>
+<p>删除该容器</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">docker rm -f testnginx</span></span><br></pre></td></tr></table></figure>
+<p>3、创建 nginx 容器并将 <code>/usr/share/nginx/html</code> 挂载到本地</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name nginx001 -d -p <span class="number">30080</span><span class="symbol">:</span><span class="number">80</span> -v 本地目录<span class="symbol">:/usr/share/nginx/html</span> nginx.<span class="number">1.15</span>.<span class="number">6</span>-alpine</span><br></pre></td></tr></table></figure>
+<h2 id="复制文件"><a href="#复制文件" class="headerlink" title="复制文件"></a>复制文件</h2><p>我们可以使用 <code>docker cp</code> 指令向容器中复制文件，或者从容器中复制文件到主机。</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">docker</span> <span class="meta">cp</span> 源目录  目标目录</span><br></pre></td></tr></table></figure>
+<ul>
+<li>复制主机文件到容器</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp <span class="string">C:</span><span class="regexp">/my.cnf mysql001:/</span>etc<span class="regexp">/mysql/</span>my.cnf</span><br></pre></td></tr></table></figure>
+<ul>
+<li>从容器复制文件到主机</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp  <span class="string">mysql001:</span><span class="regexp">/etc/</span>mysql<span class="regexp">/my.cnf C:/</span>my.cnf</span><br></pre></td></tr></table></figure>
+<h1 id="综合案例、使用-Docker-搭建-LNMP-环境"><a href="#综合案例、使用-Docker-搭建-LNMP-环境" class="headerlink" title="综合案例、使用 Docker 搭建 LNMP 环境"></a>综合案例、使用 Docker 搭建 LNMP 环境</h1><p>我们平时在做开发时，为了简单、方便我们常用以下开发环境：</p>
+<p>1、WAMP</p>
+<p>2、Visual AMP\NMP</p>
+<p>3、PHP 内置 WEB 服务器，如 <code>php -S localhost:9999 -t</code> 还有 Laravel 中的 <code>php artisan serve --port 8001</code> 。</p>
+<p>以上这三种只适用于开发时使用，在真正的线上环境我们需要安装更加稳定并且能够支撑高并发的运行环境，目前 PHP 的生产环境最常用的就是 <code>LNMP</code>。</p>
+<p>LNMP：Linux + Nginx + MySQL + PHP</p>
+<h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><p>Nginx 是目前最流行的高性能、高并发的开源、免费的 WEB 服务器，俄国斯的开发。</p>
+<p><img src="http://f.hiphotos.baidu.com/image/%70%69%63/item/a044ad345982b2b7e533214f3cadcbef77099b88.jpg" alt=""></p>
+<p>Nginx 使用 Linux 中最流行的 <code>epoll</code> 做为事件处理机制，并且 Nginx 在运行时只消耗极少的系统资源，所以可以轻松实现上万的并发请求，Nginx 除了可以做为 WEB 服务器之外，还可以做为Email、反向代理、负载均衡、流媒体等服务器。</p>
+<p>Nginx 和其它脚本语言（如PHP）一起工作时一般使用 FastCGI 机制。</p>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>方案一、一个容器中同时 nginx php-mpm </p>
+<p>​    好处：简单、方便</p>
+<p>​    缺点：不利于每个软件的横向扩展</p>
+<p>方案二、把 nginx、php-fpm、MySQL 分别放到三个容器中</p>
+<p>​    好处：有利于单独扩展每个系统</p>
+<p>​    缺点：部署相对复杂</p>
+<h2 id="LNMP-模型图"><a href="#LNMP-模型图" class="headerlink" title="LNMP 模型图"></a>LNMP 模型图</h2><p>创建三个容器：Nginx、PHP-FPM、MySQL，它们之间的关系是：</p>
+<p>（说明：图中端口可以任意修改）</p>
+<p><img src="http://e.hiphotos.baidu.com/image/%70%69%63/item/ac4bd11373f08202eea88ab446fbfbedab641b06.jpg" alt=""></p>
+<p>总结：Nginx 负载处理静态文件，如果用户访问的是 PHP 文件，就转发给 PHP 服务器的9000来处理，PHP服务器处理完之后，把结果返回给 nginx,然后nginx再返回给前端。</p>
+<p>1、下载镜像</p>
+<p>下载 nginx 镜像（alpine版的更小）</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">docker</span> <span class="selector-tag">pull</span> <span class="selector-tag">nginx</span><span class="selector-pseudo">:1.15-7-alpine</span></span><br></pre></td></tr></table></figure>
+<p>下载 MySQL 镜像</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">docker</span> <span class="selector-tag">pull</span> <span class="selector-tag">mysql</span><span class="selector-pseudo">:5.27.24</span></span><br></pre></td></tr></table></figure>
+<p>下载 PHP-FPM 镜像</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">docker</span> <span class="selector-tag">pull</span> <span class="selector-tag">php</span><span class="selector-pseudo">:7.2-fpm-alpine</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://d.hiphotos.baidu.com/image/%70%69%63/item/30adcbef76094b3697400366aecc7cd98c109d6e.jpg" alt=""></p>
+<p>2、创建容器</p>
+<p>我们创建三个容器 Nginx、PHP-FPM、MySQL，这里需要注意的是它们创建的顺序：</p>
+<p>MySQL =&gt; PHP-FPM =&gt; Nginx</p>
+<p>创建 MySQL 容器</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="builtin-name">run</span> --name mysql001 -d -p 33306:3306 -e <span class="attribute">MYSQL_ROOT_PASSWORD</span>=123123 mysql:5.7.24</span><br></pre></td></tr></table></figure>
+<p>创建 php 容器</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">docker</span> <span class="selector-tag">run</span> <span class="selector-tag">--name</span> <span class="selector-tag">phpfpm7</span><span class="selector-class">.2</span> <span class="selector-tag">-d</span> <span class="selector-tag">--link</span> <span class="selector-tag">mysql001</span><span class="selector-pseudo">:mysql</span> <span class="selector-tag">php</span><span class="selector-pseudo">:7.2-fpm-alpine</span></span><br></pre></td></tr></table></figure>
+<p>创建 nginx 容器</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">docker</span> <span class="selector-tag">run</span> <span class="selector-tag">--name</span> <span class="selector-tag">nginx</span> <span class="selector-tag">-d</span> <span class="selector-tag">-p</span> 8988<span class="selector-pseudo">:80</span> <span class="selector-tag">--link</span> <span class="selector-tag">phpfpm7</span><span class="selector-class">.2</span><span class="selector-pseudo">:php</span> <span class="selector-tag">nginx</span><span class="selector-pseudo">:1.15.7-alpine</span></span><br></pre></td></tr></table></figure>
+<p>3、配置 Nginx</p>
+<p>Nginx 只能对静态文件（html，css，js，图片等）进行处理，无法处理动态文件（php、python等），我们需要配置 nginx 将动态脚本转发给 PHP 服务器。</p>
+<p>a. 进入 nginx 容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it nginx /bin/sh</span><br></pre></td></tr></table></figure>
+<p>b、查找配置文件位置</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">find</span> / -name nginx.conf</span><br></pre></td></tr></table></figure>
+<p>c、修改 Nginx 的配置文件</p>
+<p>/etc/nginx/conf.d/default.conf</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="keyword">location</span> <span class="title">/ &#123;</span></span><br><span class="line"><span class="title">        root</span>   /usr/share/nginx/html;    <span class="comment"># 网站根目录</span></span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">location</span> <span class="title">~ \.php</span>$ &#123; </span><br><span class="line">        fastcgi_pass   php:<span class="number">9000</span>;         <span class="comment"># 转发到 PHP 服务器的地址,PHP是容器的别名</span></span><br><span class="line">        fastcgi_index  index.php;        </span><br><span class="line">        fastcgi_param  SCRIPT_FILENAME  /php$fastcgi_script_name;  <span class="comment"># 转发的文件名</span></span><br><span class="line">        include        fastcgi_params;                                </span><br><span class="line">    &#125;   </span><br><span class="line">    </span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>说明：</p>
+<p>$fastcgi_script_name ：代表当前访问的文件名，比如，如果访问的是 localhost/1.php ，那么这一项的值就是 1.php</p>
+<p>d、退出 nginx 容器并重新启该容器</p>
+<p>因为我们修改了 nginx 的配置文件，所以我们需要重启服务器</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">docker restart nginx</span></span><br></pre></td></tr></table></figure>
+<p>e、进入 phpfpm 容器创建 /php 目录</p>
+<p>在 nginx 中我们配置了，当遇到 PHP 脚本时，就转发 <code>/php$fastcgi_script_name;</code> 这个路径到 php 容器，所以PHP会到它的 <code>/php</code> 目录下去查找，所以我们需要进入 PHP 创建中并创建这个目录。</p>
+<p>进入PHP容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it phpfpm7.2 /bin/sh</span><br></pre></td></tr></table></figure>
+<p>进入容器之后，创建目录</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /php</span><br></pre></td></tr></table></figure>
+<p>然后我们就可以在 /php 目录中创建  php 脚本了，这些脚本就可以通过浏览器运行访问了。</p>
+<p>Nginx 运行PHP的流程：</p>
+<p><img src="http://g.hiphotos.baidu.com/image/%70%69%63/item/d8f9d72a6059252dc248068f399b033b5ab5b9d9.jpg" alt=""></p>
+<p>a、nginx 判断访问的文件以 .php 结尾</p>
+<p>b、nginx 将 /php/1.php 这个路径传给 PHP 的9000端口</p>
+<p>c、PHP接收到nginx传过来的路径，就在本机中读取这个文件并运行</p>
+<p>d、PHP将运行结果返回给 nginx</p>
+<p>e、NGINX将结果返回给用户</p>
+<h2 id="两个问题"><a href="#两个问题" class="headerlink" title="两个问题"></a>两个问题</h2><p>lnmp环境搭建好了，但是还有些问题需要考虑</p>
+<p>1、为PHP容器中安装扩展</p>
+<p>我们使用的是 PHP 默认的镜像，这个镜像中缺少很多必要的 PHP 扩展，比如 gd、redis、pdo_mysql 等，这些扩展都需要单独安装。</p>
+<p>不过官方提供了安装扩展的两种方法：</p>
+<p>​    核心扩展（pdo_mysql,gd等） 使用 docker-php-ext-install</p>
+<p>如安装 gd 库：(先进入PHP容器，然后执行以下命令)</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-php-ext-<span class="keyword">install</span> gd</span><br></pre></td></tr></table></figure>
+<p>​    </p>
+<p>​    其它扩展（redis、yaf、swoole等）使用 pecl</p>
+<p>如安装 redis：(先进入PHP容器，然后执行以下命令)</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pecl <span class="keyword">install </span>redis</span><br><span class="line">docker-php-<span class="keyword">ext-enable </span>redis</span><br></pre></td></tr></table></figure>
+<p>2、把两个容器代码的目录都绑定到一个目录中</p>
+<p>现在我们需要把静态页保存到 nginx 容器中，然后把 php 脚本写到 php 容器中，这样在放代码时比较麻烦，所以我们可以将两个服务器的代码目录都绑定到本机，这样直接在本机就可以编写代码了。</p>
+<p>a、在本机创建一代码目录</p>
+<p>b、删除nginx容器重新创建一个新的容器</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name nginx -d -p <span class="number">8988</span><span class="symbol">:</span><span class="number">80</span> -v 本地目录<span class="symbol">:/usr/share/nginx/html</span> --link phpfpm7.<span class="number">2</span><span class="symbol">:php</span> <span class="symbol">nginx:</span><span class="number">1.15</span>.<span class="number">7</span>-alpine</span><br></pre></td></tr></table></figure>
+<p>通过 -v 我们就把 nginx 中网站根目录绑定球果一地的目录 中了。</p>
+<p>创建 nginx 容器之后，重新向前面一样修改一下 <code>/etc/nginx/conf.d/default.conf</code> 配置文件，然后重新启动即可。</p>
+<p>c、删除PHP容器然后重新创建一个新的容器</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run <span class="params">--name</span> phpfpm7.2 -d -v 本地目录:<span class="string">/php</span> <span class="params">--link</span> mysql001<span class="function">:mysql</span> php<span class="function">:7.2-fpm-alpine</span></span><br></pre></td></tr></table></figure>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/\ws3.sinaimg.cn/large/005BYqpgly1fyybtcomtyj308p08ljsn.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/1950196171">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="http://www.nbplus.wang">王震骡</a></span>
+        <span>/</span>
+        
+        <span><a href="http://blog.xuruochen.cn">XRC</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

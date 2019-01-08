@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="王一凡的博客">
+    <meta name="keyword" content="博客">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        接口开发 - Wyafana的博客 | Wyafana&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Happy New Year To You </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/\ws3.sinaimg.cn/large/005BYqpgly1fyybvg7oxuj30b408cjs4.jpg">
+        </div>
+        <div class="name">
+            <i>Wyafana</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前、后端分离"><span class="toc-text">前、后端分离</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#REST-规范"><span class="toc-text">REST 规范</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-HTTPS"><span class="toc-text">使用 HTTPS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#域名"><span class="toc-text">域名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#版本控制"><span class="toc-text">版本控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口命名"><span class="toc-text">接口命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#资源过滤"><span class="toc-text">资源过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正确使用状态码"><span class="toc-text">正确使用状态码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据响应格式"><span class="toc-text">数据响应格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#频繁限制"><span class="toc-text">频繁限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编写文档"><span class="toc-text">编写文档</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Postman"><span class="toc-text">Postman</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#集合管理"><span class="toc-text">集合管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境变量"><span class="toc-text">环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#保存示例数据"><span class="toc-text">保存示例数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成接口文档"><span class="toc-text">生成接口文档</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Laravel"><span class="toc-text">Laravel</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义路由"><span class="toc-text">定义路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#频率限制"><span class="toc-text">频率限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AJAX跨域"><span class="toc-text">AJAX跨域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发送-HTTP-状态码"><span class="toc-text">发送 HTTP 状态码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发送自定义状态码"><span class="toc-text">发送自定义状态码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在-Laravel-框架中添加自定义函数"><span class="toc-text">在 Laravel 框架中添加自定义函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表单验证"><span class="toc-text">表单验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT"><span class="toc-text">JWT</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#生成令牌"><span class="toc-text">生成令牌</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#令牌验证"><span class="toc-text">令牌验证</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#接口实现"><span class="toc-text">接口实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注册接口"><span class="toc-text">注册接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#登录接口"><span class="toc-text">登录接口</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#令牌的验证"><span class="toc-text">令牌的验证</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#服务器端验证"><span class="toc-text">服务器端验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Postman-中设置令牌"><span class="toc-text">Postman 中设置令牌</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> Happy New Year To You </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        接口开发
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-01-07 20:14:00</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#PHP" title="PHP">PHP</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="前、后端分离"><a href="#前、后端分离" class="headerlink" title="前、后端分离"></a>前、后端分离</h1><p>随着前端设备（智能手机、IPAD、平板、笔记本、摄像头、智能家具等）的及物联网的发展，前端的形式变得更加多样化：</p>
+<p><img src="http://d.hiphotos.baidu.com/image/%70%69%63/item/cefc1e178a82b90189e5c5b87e8da9773812eff5.jpg" alt=""></p>
+<p>在这种时代的大背景下，传统的 <code>在前端代码中嵌入后端代码的混合式开发</code> 已经无法满足目前的情况了。</p>
+<p>前端技术慢慢从后端开发中分离了出来，前端只关注前端页在，后端只负责数据的处理，后端负责提供数据接口与前端进行通信，通信时一般使用 <code>json/xml</code> 格式。</p>
+<p>既然前、后端通过接口进行沟通，那么我们就要为接口定义一个规范，如果所有的接口都满足同样的规范，就可以降低沟通和开发的成本。</p>
+<h1 id="REST-规范"><a href="#REST-规范" class="headerlink" title="REST 规范"></a>REST 规范</h1><p><img src="http://a.hiphotos.baidu.com/image/%70%69%63/item/bf096b63f6246b6004beb4ffe6f81a4c500fa28c.jpg" alt=""><br>RESTful 是一种软件设计风格，由 <a href="http://roy.gbiv.com/" target="_blank" rel="noopener">Roy Fielding</a> 在他的 <a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm" target="_blank" rel="noopener">论文</a> 中提出，全称为 <code>Representational State Transfer</code>，直译为<code>表现层状态转移</code>。</p>
+<p>RESTful 风格的接口，目前来看，实现的最好的就是 <a href="https://developer.github.com/v3/" target="_blank" rel="noopener">Github API</a>，经常被效仿。接下来我们通过分析 Github API 来引出我们的 API 设计原则。</p>
+<h2 id="使用-HTTPS"><a href="#使用-HTTPS" class="headerlink" title="使用 HTTPS"></a>使用 HTTPS</h2><p>HTTPS（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的 HTTP 通道，简单讲是 HTTP 的安全版。</p>
+<p>HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</p>
+<p>HTTPS 为接口的安全提供了保障，可以有效防止通信被窃听和篡改。</p>
+<h2 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h2><p>应当尽可能的将 API 与其主域名区分开，可以使用专用的域名，访问我们的 API，例如：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//api.xxx.com</span></span><br></pre></td></tr></table></figure>
+<p>或者可以放在主域名下，例如：</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">https:</span><span class="comment">//www.xxx.com/api</span></span><br></pre></td></tr></table></figure>
+<h2 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h2><p>随着业务的发展，需求的不断变化，API 的迭代是必然的，很可能当前版本正在使用，而我们就得开发甚至上线一个不兼容的新版本，为了让旧用户可以正常使用，为了保证开发的顺利进行，我们需要控制好 API 的版本。</p>
+<p>通常情况下，有两种做法：</p>
+<ul>
+<li>将版本号直接加入 URL 中</li>
+</ul>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">https:</span><span class="comment">//api.xxx.com/v1</span></span><br><span class="line"><span class="symbol">https:</span><span class="comment">//api.xxx.com/v2</span></span><br></pre></td></tr></table></figure>
+<h2 id="接口命名"><a href="#接口命名" class="headerlink" title="接口命名"></a>接口命名</h2><p>规则一、使用 HTTP 动词代表操作的类型。</p>
+<table>
+<thead>
+<tr>
+<th>动词</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>获取资源，单个或多个</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>创建资源</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>更新资源，客户端提供完整的资源数据</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>更新资源，客户端提供部分的资源数据</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>删除资源</td>
+</tr>
+</tbody>
+</table>
+<p>GitHub 网站的一些例子：</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GET /issues                                      列出所有的 issue</span><br><span class="line">GET /repos/<span class="symbol">:owner/</span><span class="symbol">:repo</span>                          列出某个项目的 信息</span><br><span class="line">GET /repos/<span class="symbol">:owner/</span><span class="symbol">:repo/issues/</span><span class="symbol">:number</span>           获取某个项目的某个 issue</span><br><span class="line">POST /repos/<span class="symbol">:owner/</span><span class="symbol">:repo/issues</span>                  为某个项目创建 issue</span><br><span class="line">PATCH /repos/<span class="symbol">:owner/</span><span class="symbol">:repo/issues/</span><span class="symbol">:number</span>         修改某个 issue</span><br><span class="line">PUT /repos/<span class="symbol">:owner/</span><span class="symbol">:repo/issues/</span><span class="symbol">:number/lock</span>      锁住某个 issue</span><br><span class="line">DELETE /repos/<span class="symbol">:owner/</span><span class="symbol">:repo/issues/</span><span class="symbol">:number/lock</span>   接收某个 issue</span><br></pre></td></tr></table></figure>
+<p>说明：冒号（：xx)）开始的代表变量，例如 /repos/fortheday001/jxshop</p>
+<p>规则二、接口地址的命名应该是名词（一般是复数形式）</p>
+<p>错误的例子：</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">POST <span class="symbol">https:</span>/<span class="regexp">/api.xxx.com/create</span>Topic</span><br><span class="line">GET <span class="symbol">https:</span>/<span class="regexp">/api.xxx.com/topic</span><span class="regexp">/show/</span><span class="number">1</span></span><br><span class="line">POST <span class="symbol">https:</span>/<span class="regexp">/api.xxx.com/topics</span><span class="regexp">/1/comments</span><span class="regexp">/create</span></span><br><span class="line"><span class="regexp">POST https:/</span><span class="regexp">/api.xxx.com/topics</span><span class="regexp">/1/comments</span><span class="regexp">/100/delete</span></span><br></pre></td></tr></table></figure>
+<p>正确的例子（名词）：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">POST <span class="string">https:</span><span class="comment">//api.xxx.com/topics</span></span><br><span class="line">GET <span class="string">https:</span><span class="comment">//api.xxx.com/topics/1</span></span><br><span class="line">POST <span class="string">https:</span><span class="comment">//api.xxx.com/topics/1/comments</span></span><br><span class="line">DELETE <span class="string">https:</span><span class="comment">//api.xxx.com/topics/1/comments/100</span></span><br></pre></td></tr></table></figure>
+<h2 id="资源过滤"><a href="#资源过滤" class="headerlink" title="资源过滤"></a>资源过滤</h2><p>当我们需要搜索、排序、分页等过滤数据时我们需要在 URL 传合适的参数：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?<span class="attribute">state</span>=closed: 不同状态的资源</span><br><span class="line">?<span class="attribute">page</span>=2&amp;per_page=100：访问第几页数据，每页多少条。</span><br><span class="line">?<span class="attribute">sortby</span>=name&amp;order=asc：指定返回结果按照哪个属性排序，以及排序顺序。</span><br></pre></td></tr></table></figure>
+<p>比如获取10条用户的请求地址为：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">GET</span> /users?<span class="attribute">per_page</span>=10</span><br></pre></td></tr></table></figure>
+<h2 id="正确使用状态码"><a href="#正确使用状态码" class="headerlink" title="正确使用状态码"></a>正确使用状态码</h2><p>接口在返回数据时应该正确的返回 HTTP 对应的状态码，常用的状态码如下：</p>
+<p><img src="http://c.hiphotos.baidu.com/image/%70%69%63/item/a8773912b31bb05132a9b5a33b7adab44bede0a8.jpg" alt=""></p>
+<p><img src="http://b.hiphotos.baidu.com/image/%70%69%63/item/2fdda3cc7cd98d1038f10dba2c3fb80e7bec9017.jpg" alt=""></p>
+<p><img src="http://f.hiphotos.baidu.com/image/%70%69%63/item/d000baa1cd11728bc2498da9c5fcc3cec2fd2cd0.jpg" alt=""></p>
+<p>常用状态码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$_http_code = [</span><br><span class="line">    <span class="number">200</span> =&gt; <span class="string">"OK"</span>,                   <span class="comment">// 成功</span></span><br><span class="line">    <span class="number">400</span> =&gt; <span class="string">"Bad Request"</span>,          <span class="comment">// 请求数据有问题</span></span><br><span class="line">    <span class="number">401</span> =&gt; <span class="string">"Unauthorized"</span>,         <span class="comment">// 未登录</span></span><br><span class="line">    <span class="number">403</span> =&gt; <span class="string">"Forbidden"</span>,            <span class="comment">// 登录但没有权限</span></span><br><span class="line">    <span class="number">404</span> =&gt; <span class="string">"Not Found"</span>,            <span class="comment">// 请求数据没找到</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<h2 id="数据响应格式"><a href="#数据响应格式" class="headerlink" title="数据响应格式"></a>数据响应格式</h2><p>接口应该返回 <code>JSON</code> 或者 <code>XML</code> 格式的数据。</p>
+<p>返回的数据的结构应该有一个固定的结构，这个结构可以自己设计，比如：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'message'</span> =&gt; <span class="string">':message'</span>,          <span class="comment">// 错误的具体描述</span></span><br><span class="line"><span class="string">'errors'</span> =&gt; <span class="string">':errors'</span>,            <span class="comment">// 参数的具体错误描述，422 等状态提供</span></span><br><span class="line"><span class="string">'code'</span> =&gt; <span class="string">':code'</span>,                <span class="comment">// 自定义的异常码</span></span><br><span class="line"><span class="string">'status_code'</span> =&gt; <span class="string">':status_code'</span>,  <span class="comment">// http状态码</span></span><br><span class="line"><span class="string">'debug'</span> =&gt; <span class="string">':debug'</span>,              <span class="comment">// debug 信息，非生产环境提供</span></span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"message"</span>: <span class="string">"422 Unprocessable Entity"</span>,</span><br><span class="line">    <span class="attr">"errors"</span>: &#123;</span><br><span class="line">        <span class="attr">"name"</span>: [</span><br><span class="line">            <span class="string">"姓名 必须为字符串。"</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"status_code"</span>: <span class="number">422</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"message"</span>: <span class="string">"您无权访问该订单"</span>,</span><br><span class="line">    <span class="attr">"status_code"</span>: <span class="number">403</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="频繁限制"><a href="#频繁限制" class="headerlink" title="频繁限制"></a>频繁限制</h2><p>为了防止服务器被攻击，减少服务器压力，需要对接口进行合适的限流控制，需要在响应头信息中加入合适的信息，告知客户端当前的限流情况</p>
+<ul>
+<li>X-RateLimit-Limit :100 最大访问次数</li>
+<li>X-RateLimit-Remaining :93 剩余的访问次数</li>
+<li>X-RateLimit-Reset :1513784506 到该时间点，访问次数会重置为 <code>X-RateLimit-Limit</code></li>
+</ul>
+<p>示例：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">curl -i <span class="string">https:</span><span class="comment">//api.github.com/users/octocat</span></span><br><span class="line">HTTP/<span class="number">1.1</span> <span class="number">200</span> OK</span><br><span class="line"><span class="string">Date:</span> Mon, <span class="number">01</span> Jul <span class="number">2013</span> <span class="number">17</span>:<span class="number">27</span>:<span class="number">06</span> GMT</span><br><span class="line"><span class="string">Status:</span> <span class="number">200</span> OK</span><br><span class="line">X-RateLimit-<span class="string">Limit:</span> <span class="number">60</span></span><br><span class="line">X-RateLimit-<span class="string">Remaining:</span> <span class="number">56</span></span><br><span class="line">X-RateLimit-<span class="string">Reset:</span> <span class="number">1372700873</span></span><br></pre></td></tr></table></figure>
+<p>超过限流次数后，需要返回 <code>429 Too Many Requests</code> 错误。</p>
+<h2 id="编写文档"><a href="#编写文档" class="headerlink" title="编写文档"></a>编写文档</h2><p>为了方便用户使用，我们需要提供清晰的文档，尽可能包括以下几点</p>
+<ul>
+<li>包括每个接口的请求参数，每个参数的类型限制，是否必填，可选的值等。</li>
+<li>响应结果的例子说明，包括响应结果中，每个参数的释义。</li>
+<li>对于某一类接口，需要有尽量详细的文字说明，比如针对一些特定场景，接口应该如何调用。</li>
+</ul>
+<h1 id="Postman"><a href="#Postman" class="headerlink" title="Postman"></a>Postman</h1><p>postman 是一个接口访问软件，非常适合服务器端程序员用来测试接口、发布接口文档等。</p>
+<p>[img]<a href="http://g.hiphotos.baidu.com/image/%70%69%63/item/5366d0160924ab180910e0bc38fae6cd7b890b32.jpg[/img]" target="_blank" rel="noopener">http://g.hiphotos.baidu.com/image/%70%69%63/item/5366d0160924ab180910e0bc38fae6cd7b890b32.jpg[/img]</a></p>
+<h2 id="集合管理"><a href="#集合管理" class="headerlink" title="集合管理"></a>集合管理</h2><p>我们可以在左侧创建接口集合，将项目中所有的接口都统一分类管理起来：</p>
+<p><img src="http://c.hiphotos.baidu.com/image/%70%69%63/item/d058ccbf6c81800a73e78885bc3533fa828b473e.jpg" alt=""></p>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>我们可以在软件中管理环境变量，环境变量可以让我们把系统的IP地址、JWT字符串等常用的内容定义到变量中保存，然后通过变量来使用这个数据，就不用每次都填写了：</p>
+<p><img src="http://e.hiphotos.baidu.com/image/%70%69%63/item/1e30e924b899a90190a85abd10950a7b0308f598.jpg" alt=""></p>
+<p>添加环境变量：</p>
+<p><img src="http://g.hiphotos.baidu.com/image/%70%69%63/item/3bf33a87e950352ad82924835e43fbf2b3118bf4.jpg" alt=""></p>
+<p>添加之后，就可以通过 <code></code> 来使用了：</p>
+<p><img src="http://a.hiphotos.baidu.com/image/%70%69%63/item/d8f9d72a6059252dc4521c8f399b033b5ab5b9f7.jpg" alt=""></p>
+<h2 id="保存示例数据"><a href="#保存示例数据" class="headerlink" title="保存示例数据"></a>保存示例数据</h2><p>当我们使用 postman 请求接口之后，会为我们美化服务器返回的数据：</p>
+<p><img src="http://b.hiphotos.baidu.com/image/%70%69%63/item/241f95cad1c8a786b0a84b856a09c93d71cf50be.jpg" alt=""></p>
+<p>返回数据之后，我们可以点击 <code>Save Response</code> 按钮保存返回的数据，保存的目的是在制作接口文档时，这些数据可以做为示例数据，保存时可以设置一个名字：</p>
+<p><img src="http://e.hiphotos.baidu.com/image/%70%69%63/item/b58f8c5494eef01f6e57194eedfe9925bd317dfd.jpg" alt=""></p>
+<h2 id="生成接口文档"><a href="#生成接口文档" class="headerlink" title="生成接口文档"></a>生成接口文档</h2><p>postman 还有一个好用的功能就是可以帮助我们生成 <code>接口文档</code>。</p>
+<p>当我们编写好接口以及保存好接口返回的数据示例之后，我们就可以使用它来生成 接口文档：</p>
+<p><img src="http://a.hiphotos.baidu.com/image/%70%69%63/item/d4628535e5dde711d83f427daaefce1b9c16614f.jpg" alt=""></p>
+<p>点击 <code>Publish Docs</code> 生成接口文档时，先选择我们要使用的环境变量：</p>
+<p><img src="http://h.hiphotos.baidu.com/image/%70%69%63/item/a8014c086e061d95d5cb36b376f40ad163d9caa8.jpg" alt=""></p>
+<p>选择完之后就可以发布了，发布之后，我们就得到发布之后的浏览地址：</p>
+<p><img src="http://c.hiphotos.baidu.com/image/%70%69%63/item/962bd40735fae6cdd95daaea02b30f2443a70f4b.jpg" alt=""></p>
+<p>把这个接口地址发给前端程序员就可以了：</p>
+<p><img src="http://e.hiphotos.baidu.com/image/%70%69%63/item/8644ebf81a4c510fd54fe3916d59252dd52aa5b5.jpg" alt=""></p>
+<p>接口文档地址：<a href="https://documenter.getpostman.com/view/3908128/RzZDjxgP" target="_blank" rel="noopener">https://documenter.getpostman.com/view/3908128/RzZDjxgP</a></p>
+<h1 id="Laravel"><a href="#Laravel" class="headerlink" title="Laravel"></a>Laravel</h1><h2 id="定义路由"><a href="#定义路由" class="headerlink" title="定义路由"></a>定义路由</h2><p>在做接口开发时，所有的接口都定义在 <code>routes/api.php</code> 文件中。</p>
+<p>定义在 <code>routes/api.php</code> 文件中的路由有几下几个特点：</p>
+<p>1、接口地址中必须加上 api 前缀，比如：<a href="http://127.0.0.1:8000/api/goods" target="_blank" rel="noopener">http://127.0.0.1:8000/api/goods</a></p>
+<p>2、没有 <code>csrf</code> 、<code>session</code>、<code>cookie</code>等传统网站开发中的常用功能（这些功能使用 jwt(json web token)（令牌）替代）</p>
+<p>3、所有接口都会有频率限制（每分钟60次）（通过 Laravel 中自带的 <code>throttle</code> 中间件实现）</p>
+<h2 id="频率限制"><a href="#频率限制" class="headerlink" title="频率限制"></a>频率限制</h2><p><code>routes/api.php</code> 文件中定义的路由都会默认被应用 <code>throttle</code> 中间件，<code>同一个IP1分钟内最多访问一个接口60次。</code></p>
+<p><img src="http://h.hiphotos.baidu.com/image/%70%69%63/item/908fa0ec08fa513dc9946c55306d55fbb2fbd97b.jpg" alt=""></p>
+<p>如果要为不同的接口设置不同的频率，可以在 <code>routes/api.php</code> 文件中定义路由时，先定义路由组，然后为这个路由组设置频率，所有这个组中的路由都会被应用同样的频率限制：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1分钟最多5次</span></span><br><span class="line">Route::group([<span class="string">'prefix'</span>=&gt;<span class="string">'api'</span>,<span class="string">'middleware'</span>=&gt;<span class="string">'throttle:5'</span>],<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Route::get(<span class="string">'users'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> \App\User::all();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 10分钟最多5次</span></span><br><span class="line">Route::group([<span class="string">'prefix'</span>=&gt;<span class="string">'api'</span>,<span class="string">'middleware'</span>=&gt;<span class="string">'throttle:5,10'</span>],<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Route::get(<span class="string">'users'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> \App\User::all();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="AJAX跨域"><a href="#AJAX跨域" class="headerlink" title="AJAX跨域"></a>AJAX跨域</h2><p>在前、后端分离开发时，前端都是使用 <code>ajax</code> 与服务器端进行通信的，但是 ajax 有一个限制：<code>不能跨域名访问服务器接口</code>。</p>
+<p>在实现工作中，前端和后端经常是部署在不同的服务器上，也就都拥有不同的域名，这时前端发送 AJAX 就会报错，比如：前端在 127.0.0.1:8000 这个域名下，而后端在 127.0.0.1:8080 这个端口下时：</p>
+<p><img src="http://h.hiphotos.baidu.com/image/%70%69%63/item/bd3eb13533fa828bc9fb9c68f01f4134960a5a64.jpg" alt=""></p>
+<p>解决办法：</p>
+<p>目前常用的解决办法有 <code>jsonp</code> 和 <code>cors</code>。</p>
+<p>JSONP：只支持 GET 请求的跨域。</p>
+<p>CORS：(跨站资源共享)，实现原理是在服务器端设置几个 http 协议头即可，缺点是有些老旧的浏览器不支持。</p>
+<p>Laravel 中使用 CORS：</p>
+<p>如果每次发请求时都手动设置协议头太麻烦了，所以可以使用 Laravel 中间件来实现。</p>
+<p>Laravel 的中间件会在接收和发送请求时自动被调用，这样就可以只编写一次代码就可以在每次请求时自动设置协议头了。</p>
+<p>1、创建中间件</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">php</span> <span class="selector-tag">artisan</span> <span class="selector-tag">make</span><span class="selector-pseudo">:middleware</span> <span class="selector-tag">CorsMiddleware</span></span><br></pre></td></tr></table></figure>
+<p>2、编写代码</p>
+<p>app\Http\Middleware\CorsMiddleware.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span><span class="params">($request, Closure $next)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $response = $next($request);</span><br><span class="line">    $origin = $request-&gt;server(<span class="string">'HTTP_ORIGIN'</span>) ? $request-&gt;server(<span class="string">'HTTP_ORIGIN'</span>) : <span class="string">''</span>;</span><br><span class="line">    <span class="comment">// 允许访问的域名列表</span></span><br><span class="line">    $allow_origin = [</span><br><span class="line">        <span class="string">'http://localhost:8080'</span>,</span><br><span class="line">    ];</span><br><span class="line">    <span class="comment">// 通过 $response-&gt;header 设置协议头</span></span><br><span class="line">    <span class="comment">// (扩展：如果想要允许所有域名跨域访问，就可以去掉if判断，然后</span></span><br><span class="line">    <span class="comment">// 	    直接设置 Access-Control-Allow-Origin : *)</span></span><br><span class="line">    <span class="keyword">if</span> (in_array($origin, $allow_origin)) &#123;</span><br><span class="line">        <span class="comment">// 如果要允许所有域名跨域访问，设置把这一项设置为 *</span></span><br><span class="line">        $response-&gt;header(<span class="string">'Access-Control-Allow-Origin'</span>, $origin);</span><br><span class="line">        $response-&gt;header(<span class="string">'Access-Control-Allow-Methods'</span>, <span class="string">'GET, POST, PATCH, PUT, DELETE, OPTIONS'</span>);</span><br><span class="line">        $response-&gt;header(<span class="string">'Access-Control-Allow-Headers'</span>, <span class="string">'Origin, Content-Type, Cookie, X-CSRF-TOKEN, Accept, Authorization, X-XSRF-TOKEN'</span>);</span><br><span class="line">        $response-&gt;header(<span class="string">'Access-Control-Expose-Headers'</span>, <span class="string">'Authorization, authenticated'</span>);</span><br><span class="line">        $response-&gt;header(<span class="string">'Access-Control-Allow-Credentials'</span>, <span class="string">'true'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $response;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、注册中间件</p>
+<p>app\Http\Kernel.php 文件中注册全局中间件。</p>
+<p>注册到 <code>$middleware</code> 数组中的中间件会在所有请求时会自动调用。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> $middleware = [</span><br><span class="line">    \App\Http\Middleware\CheckForMaintenanceMode::class,</span><br><span class="line">    \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,</span><br><span class="line">    \App\Http\Middleware\TrimStrings::class,</span><br><span class="line">    \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,</span><br><span class="line">    \App\Http\Middleware\TrustProxies::class,</span><br><span class="line">    \App\Http\Middleware\CorsMiddleware::class</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<h2 id="发送-HTTP-状态码"><a href="#发送-HTTP-状态码" class="headerlink" title="发送 HTTP 状态码"></a>发送 HTTP 状态码</h2><p>在 Laravel 框架中可以直接使用 <code>response</code> 方法向前端发送数据和状态码信息。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> response(<span class="string">'无权访问！'</span>， <span class="number">403</span>);</span><br></pre></td></tr></table></figure>
+<p>这时框架会在发送数据时设置一个 403 的协议头信息，当浏览器收到非 <code>2xx</code> 开头的状态码时会显示显示错误信息：</p>
+<p><img src="http://a.hiphotos.baidu.com/image/%70%69%63/item/730e0cf3d7ca7bcb0a78c7a4b3096b63f624a83d.jpg" alt=""></p>
+<p>当我们使用 axios 请求这个地址时，如果服务器返回的是<code>非 2xx</code> 开头的状态码，那么就会认为发生了错误，错误信息需要在 <code>catch</code> 中获取：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">axios.get(<span class="string">'http://127.0.0.1:8000/api/test'</span>)</span><br><span class="line">    .then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line">    	<span class="comment">// 服务器返回了 2xx 状态码(代码成功时执行)</span></span><br><span class="line">    	<span class="built_in">console</span>.log( res.data )</span><br><span class="line">	&#125;)</span><br><span class="line">  	.catch(<span class="function">(<span class="params">err</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (err.response) &#123;</span><br><span class="line">          <span class="comment">// 服务器返回了一个非 2xx 的状态码时</span></span><br><span class="line">          <span class="built_in">console</span>.log(err.response.data);</span><br><span class="line">          <span class="built_in">console</span>.log(err.response.status);</span><br><span class="line">          <span class="built_in">console</span>.log(err.response.headers);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (err.request) &#123;</span><br><span class="line">          <span class="comment">// 发送请求时出错(没有发送成功)</span></span><br><span class="line">          <span class="built_in">console</span>.log(err.request);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="comment">// 设置 axios 时出错(没有发送成功)</span></span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'Error'</span>, err.message);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(err.config);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="发送自定义状态码"><a href="#发送自定义状态码" class="headerlink" title="发送自定义状态码"></a>发送自定义状态码</h2><p>上面的方式是在 HTTP 协议头中发送状态码信息，这种方式的缺点的是：<code>如果不是 2xx 的状态码，浏览器就会显示错误</code> 这样的用户体验不太好。</p>
+<p>我们可以在程序中无论正确与否都发送 200 状态码（成功），然后把错误的状态码信息放到我们自定义的数据中返回给前端，然后前端通过我们定义的状态码来判断对错，这样浏览器就不会显示错误信息了：</p>
+<p>比如：我们可以在项目中定义两个函数，成功时调用 ok 向前端发数据 ，调用时使用 error 向后端发消息：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ok</span><span class="params">($data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> [</span><br><span class="line">        <span class="string">'status_code'</span> =&gt; <span class="number">200</span>,</span><br><span class="line">        <span class="string">'message'</span>=&gt;<span class="string">'ok'</span>,</span><br><span class="line">        <span class="string">'data'</span> =&gt; $data</span><br><span class="line">    ];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">error</span><span class="params">($error, $code)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> $_http_code = [</span><br><span class="line">        <span class="number">400</span> =&gt; <span class="string">"Bad Request"</span>,                  <span class="comment">// 请求数据有问题</span></span><br><span class="line">        <span class="number">401</span> =&gt; <span class="string">"Unauthorized"</span>,                 <span class="comment">// 未登录</span></span><br><span class="line">        <span class="number">403</span> =&gt; <span class="string">"Forbidden"</span>,                    <span class="comment">// 登录但没有权限</span></span><br><span class="line">        <span class="number">404</span> =&gt; <span class="string">"Not Found"</span>,                    <span class="comment">// 请求数据没找到</span></span><br><span class="line">        <span class="number">422</span> =&gt; <span class="string">"Unprocessable Entity"</span>,         <span class="comment">// 无法处理输入的数据</span></span><br><span class="line">    ];</span><br><span class="line">    <span class="keyword">return</span> [</span><br><span class="line">        <span class="string">'status_code'</span> =&gt; $code,</span><br><span class="line">        <span class="string">'message'</span> =&gt; $_http_code[$code],</span><br><span class="line">        <span class="string">'errors'</span> =&gt; $error</span><br><span class="line">    ];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在程序中我们可以这样显示数据：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestController</span> <span class="keyword">extends</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">(Request $req)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        $validator = Validator::make($req-&gt;all(), [</span><br><span class="line">            <span class="string">'title'</span> =&gt; <span class="string">'required|unique:posts|max:255'</span>,</span><br><span class="line">            <span class="string">'body'</span> =&gt; <span class="string">'required'</span>,</span><br><span class="line">        ]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ($validator-&gt;fails()) &#123;</span><br><span class="line">            <span class="keyword">return</span> error($validator-&gt;errors(), <span class="number">422</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ok([</span><br><span class="line">            <span class="string">'name'</span> =&gt; <span class="string">'tom'</span>,</span><br><span class="line">            <span class="string">'age'</span> =&gt; <span class="number">20</span>,</span><br><span class="line">        ]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这时前端收到的消息时，同样返回了 422 错误的状态码，只不过这次不是在 http 协议头中返回的，是在我们正常的数据中返回的，这样浏览器就不会显示错误信息了：</p>
+<p><img src="http://h.hiphotos.baidu.com/image/%70%69%63/item/b17eca8065380cd7b67ba266ac44ad34588281d7.jpg" alt=""></p>
+<h2 id="在-Laravel-框架中添加自定义函数"><a href="#在-Laravel-框架中添加自定义函数" class="headerlink" title="在 Laravel 框架中添加自定义函数"></a>在 Laravel 框架中添加自定义函数</h2><p>有时我们为了让 Laravel 框架更加的好用，我们会向框架中添加一些自定义的函数，那么这些自定义的函数应该放在哪里？其实，我们可以这样做：</p>
+<p>1、创建 <code>app\helpers.php</code> 文件保存我们自定义的函数</p>
+<p>app\helpers.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ok</span><span class="params">($data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> [</span><br><span class="line">        <span class="string">'status_code'</span> =&gt; <span class="number">200</span>,</span><br><span class="line">        <span class="string">'message'</span>=&gt;<span class="string">'ok'</span>,</span><br><span class="line">        <span class="string">'data'</span> =&gt; $data</span><br><span class="line">    ];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">error</span><span class="params">($error, $code)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> $_http_code = [</span><br><span class="line">        <span class="number">400</span> =&gt; <span class="string">"Bad Request"</span>,                  <span class="comment">// 请求数据有问题</span></span><br><span class="line">        <span class="number">401</span> =&gt; <span class="string">"Unauthorized"</span>,                 <span class="comment">// 未登录</span></span><br><span class="line">        <span class="number">403</span> =&gt; <span class="string">"Forbidden"</span>,                    <span class="comment">// 登录但没有权限</span></span><br><span class="line">        <span class="number">404</span> =&gt; <span class="string">"Not Found"</span>,                    <span class="comment">// 请求数据没找到</span></span><br><span class="line">        <span class="number">422</span> =&gt; <span class="string">"Unprocessable Entity"</span>,         <span class="comment">// 无法处理输入的数据</span></span><br><span class="line">        <span class="number">500</span> =&gt; <span class="string">"Internal Server Error"</span>,         <span class="comment">// 服务器内部错误</span></span><br><span class="line">    ];</span><br><span class="line">    <span class="keyword">return</span> [</span><br><span class="line">        <span class="string">'status_code'</span> =&gt; $code,</span><br><span class="line">        <span class="string">'message'</span> =&gt; $_http_code[$code],</span><br><span class="line">        <span class="string">'errors'</span> =&gt; $error</span><br><span class="line">    ];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、修改 composer.json 添加自动加载项</p>
+<p>composer.json</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">"autoload": &#123;</span><br><span class="line">    ...</span><br><span class="line">    "files": [</span><br><span class="line">        <span class="string">"app/helpers.php"</span></span><br><span class="line">    ]</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>3、命令行中执行加载指令</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer dump-<span class="keyword">auto</span></span><br></pre></td></tr></table></figure>
+<p>4、重新启动 Laravel 框架然后就可以在项目中直接使用 <code>app\helpers.php</code> 文件中定义的函数了。</p>
+<h2 id="表单验证"><a href="#表单验证" class="headerlink" title="表单验证"></a>表单验证</h2><p>因为 Laravel 框架中的表单验证默认的行为是 <code>验证失败就跳转回上一个页面</code> ，而在做接口开发时我们需要返回 JSON 数据而不是跳转，这时我们有多种解决办法，比如：我们可以采用 <code>手动验证</code> 的方式来验证数据，然后自己来控制在验证失败时返回 JSON 数据：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自己创建验证器</span></span><br><span class="line">$validator = Validator::make($req-&gt;all(), [</span><br><span class="line">            <span class="string">'name'</span> =&gt; <span class="string">'required'</span>,</span><br><span class="line">            <span class="string">'tel'</span> =&gt; <span class="string">'required|regex:/^1[34578][0-9]&#123;9&#125;$/'</span>,</span><br><span class="line">            <span class="string">'province'</span> =&gt; <span class="string">'required'</span>,</span><br><span class="line">            <span class="string">'city'</span> =&gt; <span class="string">'required'</span>,</span><br><span class="line">            <span class="string">'area'</span> =&gt; <span class="string">'required'</span>,</span><br><span class="line">            <span class="string">'address'</span> =&gt; <span class="string">'required'</span>,</span><br><span class="line">            <span class="string">'is_default'</span> =&gt; <span class="string">'required'</span>,</span><br><span class="line">        ]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果验证失败返回 json 数据</span></span><br><span class="line"><span class="keyword">if</span> ($validator-&gt;fails()) &#123;</span><br><span class="line">    <span class="keyword">return</span> error($validator-&gt;errors(), <span class="number">422</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h2><p>在 Laravel 框架中我们可以使用 <code>php-jwt</code> 这个扩展包来生成、验证、解析令牌。</p>
+<h3 id="生成令牌"><a href="#生成令牌" class="headerlink" title="生成令牌"></a>生成令牌</h3><p>1、安装扩展包</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">composer</span> <span class="meta">require</span> firebase/php-jwt</span><br></pre></td></tr></table></figure>
+<p>2、.env 中定义加密密钥</p>
+<p>.env</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">JWT_KEN=fdsa32@<span class="comment">#RFSDafpeq3r2fews8d783f;fa/fd293f</span></span><br><span class="line">JWT_EXPIRE=7200</span><br></pre></td></tr></table></figure>
+<p>3、生成令牌</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Firebase</span>\<span class="title">JWT</span>\<span class="title">JWT</span>;</span><br><span class="line">...</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 读取密钥</span></span><br><span class="line">$key = env(<span class="string">'JWT_KEY'</span>);</span><br><span class="line"><span class="comment">// 当前时间戳</span></span><br><span class="line">$now = time();</span><br><span class="line"><span class="comment">// 加密数据</span></span><br><span class="line">$data = <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">"iat"</span> =&gt; $now,     					    <span class="comment">// 当前时间</span></span><br><span class="line">    <span class="string">"exp"</span> =&gt; $now + env(<span class="string">'JWT_EXPIRE'</span>),      <span class="comment">// 过期时间</span></span><br><span class="line">    <span class="string">"id"</span> =&gt; <span class="number">1</span>,                              <span class="comment">// 用户ID</span></span><br><span class="line">    <span class="comment">// 其它需要保存的数据 ...</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">// 生成 JWT</span></span><br><span class="line">$jwt = JWT::encode($data, $key);</span><br></pre></td></tr></table></figure>
+<h3 id="令牌验证"><a href="#令牌验证" class="headerlink" title="令牌验证"></a>令牌验证</h3><p>在 Laravel 框架中我们可以使用中间件来验证、解析令牌，然后将解析之后的数据保存到 <code>$request-&gt;jwt</code> 属性中，然后在项目中就可以使用 <code>$request-&gt;jwt</code> 来获取 JWT 中的数据了。</p>
+<p>1、创建中间件</p>
+<p>app\Http\Middleware\Jwt.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Http</span>\<span class="title">Middleware</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Closure</span>;</span><br><span class="line"><span class="keyword">use</span> \<span class="title">Firebase</span>\<span class="title">JWT</span>\<span class="title">JWT</span> <span class="title">as</span> <span class="title">JWTCHECK</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Jwt</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Handle an incoming request.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span>  \Illuminate\Http\Request  $request</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span>  \Closure  $next</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> mixed</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span><span class="params">($request, Closure $next)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $jwt = substr($request-&gt;server(<span class="string">'HTTP_AUTHORIZATION'</span>), <span class="number">7</span>);</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            $request-&gt;jwt = JWTCHECK::decode($jwt, env(<span class="string">'JWT_KEY'</span>), <span class="keyword">array</span>(<span class="string">'HS256'</span>));</span><br><span class="line">            <span class="keyword">return</span> $next($request);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(\<span class="keyword">Exception</span> $e)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> response([</span><br><span class="line">                <span class="string">'code'</span>=&gt;<span class="string">'403'</span>,</span><br><span class="line">                <span class="string">'message'</span>=&gt;<span class="string">'HTTP/1.1 403 Forbidden'</span></span><br><span class="line">            ]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、注册中间件</p>
+<p>app\Http\Kernel.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> $routeMiddleware = [</span><br><span class="line">    <span class="string">'auth'</span> =&gt; \App\Http\Middleware\Authenticate::class,</span><br><span class="line">    <span class="string">'auth.basic'</span> =&gt; \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,</span><br><span class="line">    <span class="string">'bindings'</span> =&gt; \Illuminate\Routing\Middleware\SubstituteBindings::class,</span><br><span class="line">    <span class="string">'cache.headers'</span> =&gt; \Illuminate\Http\Middleware\SetCacheHeaders::class,</span><br><span class="line">    <span class="string">'can'</span> =&gt; \Illuminate\Auth\Middleware\Authorize::class,</span><br><span class="line">    <span class="string">'guest'</span> =&gt; \App\Http\Middleware\RedirectIfAuthenticated::class,</span><br><span class="line">    <span class="string">'signed'</span> =&gt; \Illuminate\Routing\Middleware\ValidateSignature::class,</span><br><span class="line">    <span class="string">'throttle'</span> =&gt; \Illuminate\Routing\Middleware\ThrottleRequests::class,</span><br><span class="line">    <span class="string">'verified'</span> =&gt; \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,</span><br><span class="line">    <span class="string">'jwt'</span> =&gt; \App\Http\Middleware\Jwt::class,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>3、注册路由时使用中间件</p>
+<p>routers/api.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Route::post(<span class="string">'/login'</span>, <span class="string">'MemberController@login'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 应用 jwt 中间件的路由</span></span><br><span class="line">Route::middleware([<span class="string">'jwt'</span>])-&gt;group(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    Route::get(<span class="string">'/orders'</span>, <span class="string">'OrderController@index'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="接口实现"><a href="#接口实现" class="headerlink" title="接口实现"></a>接口实现</h1><p>接下来我们学习一下如何使用 Laravel 框架实现接口的开发。</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>首先我们需要修改 <code>.env</code> 文件配置上数据库的账号：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">DB_CONNECTION</span>=mysql</span><br><span class="line"><span class="attr">DB_HOST</span>=<span class="number">127.0</span>.<span class="number">0.1</span></span><br><span class="line"><span class="attr">DB_PORT</span>=<span class="number">3306</span></span><br><span class="line"><span class="attr">DB_DATABASE</span>=jxshop</span><br><span class="line"><span class="attr">DB_USERNAME</span>=root</span><br><span class="line"><span class="attr">DB_PASSWORD</span>=<span class="number">123456</span></span><br></pre></td></tr></table></figure>
+<p>配置好之后注意：<code>需要重新启动服务</code>。</p>
+<h2 id="注册接口"><a href="#注册接口" class="headerlink" title="注册接口"></a>注册接口</h2><p>1、首先我们在 <code>postman</code> 软件中定义接口的名称、地址、参数等信息：</p>
+<p><img src="http://h.hiphotos.baidu.com/image/%70%69%63/item/267f9e2f07082838c8e4dc9fb599a9014d08f154.jpg" alt=""></p>
+<p>说明：</p>
+<ul>
+<li>编写接口是先创建集合，然后再创建二级目录来管理接口（接口多时好找）</li>
+<li>接口是 post 时需要在 <code>body</code> 中设置需要提交的数据，一般使用 <code>x-www-form-urlencoded</code> 方式提交数据</li>
+<li>通过环境变量来管理常用的数据，比如使用 <code>host</code> 变量保存接口地址</li>
+</ul>
+<p>2、创建环境变量</p>
+<p>在使用 postman 测试接口时，有些数据使用的频率比较高，比如：服务器地址、令牌等，这时我们就可以定义环境变量来保存这些数据，方便修改和维护。</p>
+<p>打开环境变量管理面板：</p>
+<p><img src="http://a.hiphotos.baidu.com/image/%70%69%63/item/9d82d158ccbf6c81e8d22c63b13eb13532fa4057.jpg" alt=""></p>
+<p>添加一套环境变量：</p>
+<p><img src="http://h.hiphotos.baidu.com/image/%70%69%63/item/4610b912c8fcc3ce44ebcab89f45d688d43f2015.jpg" alt=""></p>
+<p>输入环境变量的名字以及定义的变量和值：</p>
+<p><img src="http://f.hiphotos.baidu.com/image/%70%69%63/item/4b90f603738da977fcce86a0bd51f8198718e35c.jpg" alt=""></p>
+<p>创建之后选择使用环境变量：</p>
+<p><img src="http://b.hiphotos.baidu.com/image/%70%69%63/item/7dd98d1001e9390118248eb576ec54e736d19612.jpg" alt=""></p>
+<p>接口写好之后就可以在 Laravel 中编写代码实现接口了。</p>
+<p>3、配置路由</p>
+<p><code>routes/api.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Route::post(<span class="string">'members'</span>, <span class="string">'MemberController@insert'</span>);</span><br></pre></td></tr></table></figure>
+<p>4、创建模型</p>
+<p>使用 artisan 指令创建模型并保存到 Models 目录中：</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:<span class="keyword">model</span> <span class="keyword">Models</span>/Member</span><br></pre></td></tr></table></figure>
+<p>模型中配置基本信息：</p>
+<p>app\Models/Member.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Models</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Eloquent</span>\<span class="title">Model</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Member</span> <span class="keyword">extends</span> <span class="title">Model</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 对应的表单</span></span><br><span class="line">    <span class="keyword">protected</span> $table = <span class="string">'members'</span>;</span><br><span class="line">    <span class="comment">// 表中是否有两个时间字段（created_at和updated_at)</span></span><br><span class="line">    <span class="keyword">public</span> $timestamps = <span class="keyword">true</span>;</span><br><span class="line">    <span class="comment">// 设置允许填充的字段</span></span><br><span class="line">    <span class="keyword">protected</span> $fillable = [<span class="string">'username'</span>,<span class="string">'password'</span>];</span><br><span class="line">    <span class="comment">// 需要隐藏的字段（不会发给前端的字段）</span></span><br><span class="line">    <span class="keyword">protected</span> $hidden = [<span class="string">'password'</span>,<span class="string">'updated_at'</span>,<span class="string">'created_at'</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5、创建控制器</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">php</span> <span class="selector-tag">artisan</span> <span class="selector-tag">make</span><span class="selector-pseudo">:controller</span> <span class="selector-tag">MemberController</span></span><br></pre></td></tr></table></figure>
+<p>app\Controller\MemberController.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Http</span>\<span class="title">Controllers</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Http</span>\<span class="title">Request</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Validator</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">Models</span>\<span class="title">Member</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MemberController</span> <span class="keyword">extends</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">insert</span><span class="params">(Request $req)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 生成验证器对象</span></span><br><span class="line">        <span class="comment">// 参数一、表单中的数据</span></span><br><span class="line">        <span class="comment">// 参数二、验证规则</span></span><br><span class="line">        $validator = Validator::make($req-&gt;all(), [</span><br><span class="line">            <span class="string">'username'</span>=&gt;<span class="string">'required|min:6|max:18|unique:members'</span>,</span><br><span class="line">            <span class="string">'password'</span>=&gt;<span class="string">'required|min:6|max:18|confirmed'</span>,</span><br><span class="line">        ]);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果失败</span></span><br><span class="line">        <span class="keyword">if</span>($validator-&gt;fails())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 获取错误信息</span></span><br><span class="line">            $errors = $validator-&gt;errors();</span><br><span class="line">            <span class="comment">// 返回 JSON 对象以及 422 的状态码</span></span><br><span class="line">            <span class="keyword">return</span> error($errors, <span class="number">422</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 插入数据库</span></span><br><span class="line">        <span class="comment">// 返回值：插入成功之后那条记录的对象</span></span><br><span class="line">        $member = Member::create([</span><br><span class="line">            <span class="string">'username'</span> =&gt; $req-&gt;username,</span><br><span class="line">            <span class="string">'password'</span> =&gt; bcrypt($req-&gt;password),</span><br><span class="line">        ]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ok($member);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6、在 postman 中测试接口</p>
+<p><img src="http://a.hiphotos.baidu.com/image/%70%69%63/item/b812c8fcc3cec3fd740fa4fedb88d43f87942703.jpg" alt=""></p>
+<p>保存返回的结果（失败、成功的结果都保存一份）：</p>
+<p><img src="http://a.hiphotos.baidu.com/image/%70%69%63/item/48540923dd54564ef257e7b2bede9c82d1584f0e.jpg" alt=""></p>
+<p>7、发布文档</p>
+<p><img src="http://a.hiphotos.baidu.com/image/%70%69%63/item/09fa513d269759eecd186340bffb43166c22dff5.jpg" alt=""></p>
+<h2 id="登录接口"><a href="#登录接口" class="headerlink" title="登录接口"></a>登录接口</h2><p>1、postman 中定义接口地址、参数等</p>
+<p><img src="http://c.hiphotos.baidu.com/image/%70%69%63/item/4afbfbedab64034fca99c18da2c379310b551de0.jpg" alt=""></p>
+<p>2、定义路由</p>
+<p>routes/api.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Route::post(<span class="string">'authorizations'</span>, <span class="string">'MemberController@login'</span>);</span><br></pre></td></tr></table></figure>
+<p>3、控制器中添加登录方法</p>
+<p>app\Http\Controllers\MemberController.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span><span class="params">(Request $req)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $validator = Validator::make($req-&gt;all(), [</span><br><span class="line">        <span class="string">'username'</span>=&gt;<span class="string">'required|min:6|max:18'</span>,</span><br><span class="line">        <span class="string">'password'</span>=&gt;<span class="string">'required|min:6|max:18'</span>,</span><br><span class="line">    ]);</span><br><span class="line">    <span class="keyword">if</span>($validator-&gt;fails())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 获取错误信息</span></span><br><span class="line">        $errors = $validator-&gt;errors();</span><br><span class="line">        <span class="comment">// 返回 JSON 对象以及 422 的状态码</span></span><br><span class="line">        <span class="keyword">return</span> error($errors, <span class="number">422</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 根据用户名查询账号是否存在 （只查询一条用 first 方法）</span></span><br><span class="line">    $member = Member::select(<span class="string">'id'</span>,<span class="string">'password'</span>)-&gt;where(<span class="string">'username'</span>,$req-&gt;username)-&gt;first();</span><br><span class="line">    <span class="keyword">if</span>($member)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 判断密码</span></span><br><span class="line">        <span class="keyword">if</span>(Hash::check($req-&gt;password, $member-&gt;password))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 把用户的信息保存到令牌（JWT）中，然后把令牌发给前端</span></span><br><span class="line">            $now = time();</span><br><span class="line">            <span class="comment">// 读取密钥</span></span><br><span class="line">            $key = env(<span class="string">'JWT_KEY'</span>);</span><br><span class="line">            <span class="comment">// 过期时间</span></span><br><span class="line">            $expire = $now + env(<span class="string">'JWT_EXPIRE'</span>);</span><br><span class="line">            <span class="comment">// 定义令牌中的数据</span></span><br><span class="line">            $data = [</span><br><span class="line">                <span class="string">'iat'</span> =&gt; $now,        <span class="comment">// 当前时间</span></span><br><span class="line">                <span class="string">'exp'</span> =&gt; $expire,     <span class="comment">// 过期时间</span></span><br><span class="line">                <span class="string">'id'</span> =&gt; $member-&gt;id,</span><br><span class="line">            ];</span><br><span class="line">            <span class="comment">// 生成令牌</span></span><br><span class="line">            $jwt = JWT::encode($data, $key);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 发给前端</span></span><br><span class="line">            <span class="keyword">return</span> ok([</span><br><span class="line">                <span class="string">'ACCESS_TOKEN'</span> =&gt; $jwt,</span><br><span class="line">            ]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> error(<span class="string">'密码不正确！'</span>, <span class="number">400</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> error(<span class="string">'用户名不存在！'</span>, <span class="number">404</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、下载 JWT 的包</p>
+<p>登录时需要 JWT 令牌机制，所以需要先安装一个解析 JWT 的包：</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">composer</span> <span class="meta">require</span> firebase/php-jwt</span><br></pre></td></tr></table></figure>
+<p>5、配置 JWT</p>
+<p>.env  文件中定义 jwt 的密钥和过期时间 </p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">JWT_KEN=fdsa32@<span class="comment">#RFSDafpeq3r2fews8d783f;fa/fd293f</span></span><br><span class="line">JWT_EXPIRE=7200</span><br></pre></td></tr></table></figure>
+<p>6、保存示例结果</p>
+<p>在 Postman 中把几种不同情况的返回结果都保存起来：</p>
+<p><img src="http://b.hiphotos.baidu.com/image/%70%69%63/item/37d12f2eb9389b500e57e3d98835e5dde6116e94.jpg" alt=""></p>
+<p>登录成功时返回令牌：</p>
+<p><img src="http://c.hiphotos.baidu.com/image/%70%69%63/item/91ef76c6a7efce1bd7bbcb41a251f3deb58f65ac.jpg" alt=""></p>
+<h1 id="令牌的验证"><a href="#令牌的验证" class="headerlink" title="令牌的验证"></a>令牌的验证</h1><p>前端在登录成功之后，会得到令牌，然后需要把得到的令牌保存到本地，之后在请求需要验证的接口时（比如下单）需要把这个令牌在 HTTP 协议头中发送到服务器端，以进行令牌验证。</p>
+<h2 id="服务器端验证"><a href="#服务器端验证" class="headerlink" title="服务器端验证"></a>服务器端验证</h2><p>我们可以使用 Laravel 框架的中间件来实现令牌的验证。</p>
+<p>1、创建中间件</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">php</span> <span class="selector-tag">artisan</span> <span class="selector-tag">make</span><span class="selector-pseudo">:middleware</span> <span class="selector-tag">Jwt</span></span><br></pre></td></tr></table></figure>
+<p>并编写中间件代码:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Http</span>\<span class="title">Middleware</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Closure</span>;</span><br><span class="line"><span class="keyword">use</span> \<span class="title">Firebase</span>\<span class="title">JWT</span>\<span class="title">JWT</span> <span class="title">as</span> <span class="title">JWTCHECK</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Jwt</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Handle an incoming request.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span>  \Illuminate\Http\Request  $request</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span>  \Closure  $next</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> mixed</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span><span class="params">($request, Closure $next)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* 说明：客户端在提交令牌时，是把令牌放到 http 协议头中（不是表单中！！）</span></span><br><span class="line"><span class="comment">                并且 JWT 规定前7个字符必须是 bearer （后面这里有个空格）</span></span><br><span class="line"><span class="comment">            HTTP_AUTHORIZATION: bearer fdkl;ajsf;dsajlfjl;jxxxxx</span></span><br><span class="line"><span class="comment">            所以我们在获取令牌时，要从 $_SERVER 中获取，不是 $_POST</span></span><br><span class="line"><span class="comment">            在 Laravel 中要获取 $_SERVER 使用  $request-&gt;server 函数</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="comment">// 从协议头是取出令牌</span></span><br><span class="line">        $jwt = substr($request-&gt;server(<span class="string">'HTTP_AUTHORIZATION'</span>), <span class="number">7</span>);</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 解析 token</span></span><br><span class="line">            $jwt = JWTCHECK::decode($jwt, env(<span class="string">'JWT_KEY'</span>), <span class="keyword">array</span>(<span class="string">'HS256'</span>));</span><br><span class="line">            <span class="comment">// 把解析出来的数据保存到 Request 对象中的 jwt 属性上，将来在控制器中就可能 $req-&gt;jwt 这样来获取了</span></span><br><span class="line">            $request-&gt;jwt = $jwt;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 继续执行下一个中间件</span></span><br><span class="line">            <span class="keyword">return</span> $next($request);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(\<span class="keyword">Exception</span> $e)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 返回错误信息</span></span><br><span class="line">            <span class="keyword">return</span> response([</span><br><span class="line">                <span class="string">'code'</span>=&gt;<span class="string">'403'</span>,</span><br><span class="line">                <span class="string">'message'</span>=&gt;<span class="string">'HTTP/1.1 403 Forbidden'</span></span><br><span class="line">            ]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、注册中间件到路由中间件组中</p>
+<p>app\Http\Kernel.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> $routeMiddleware = [</span><br><span class="line">    <span class="string">'auth'</span> =&gt; \App\Http\Middleware\Authenticate::class,</span><br><span class="line">    <span class="string">'auth.basic'</span> =&gt; \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,</span><br><span class="line">    <span class="string">'bindings'</span> =&gt; \Illuminate\Routing\Middleware\SubstituteBindings::class,</span><br><span class="line">    <span class="string">'cache.headers'</span> =&gt; \Illuminate\Http\Middleware\SetCacheHeaders::class,</span><br><span class="line">    <span class="string">'can'</span> =&gt; \Illuminate\Auth\Middleware\Authorize::class,</span><br><span class="line">    <span class="string">'guest'</span> =&gt; \App\Http\Middleware\RedirectIfAuthenticated::class,</span><br><span class="line">    <span class="string">'signed'</span> =&gt; \Illuminate\Routing\Middleware\ValidateSignature::class,</span><br><span class="line">    <span class="string">'throttle'</span> =&gt; \Illuminate\Routing\Middleware\ThrottleRequests::class,</span><br><span class="line">    <span class="string">'verified'</span> =&gt; \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,</span><br><span class="line">    <span class="string">'jwt'</span> =&gt; \App\Http\Middleware\Jwt::class,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>3、在定义路由时应用中间件</p>
+<p>routes/api.php</p>
+<p>先定义一个路由组，然后对组应用 jwt 中间件，所有这个组中的路由都会先验证令牌</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Route::middleware([<span class="string">'jwt'</span>])-&gt;group(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    Route::post(<span class="string">'orders'</span>, <span class="string">'MemberController@order'</span>);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>4、控制器中获取令牌数据</p>
+<p>因为在中间件中我们已经把解析令牌的数据保存到 Request 对象的 jwt 属性中了，所以在控制器中可以直接使用 <code>$req-&gt;jwt</code> 来获取令牌中的数据：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">order</span><span class="params">(Request $req)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 获取令牌中的数据</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">echo</span> $req-&gt;jwt-&gt;id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Postman-中设置令牌"><a href="#Postman-中设置令牌" class="headerlink" title="Postman 中设置令牌"></a>Postman 中设置令牌</h2><p>当使用 Postman 来请求需要验证的接口时，需要先在 Postman 中设置令牌，否则 会请求失败。</p>
+<p>1、先使用正确的账号和密码登录成功得到一个令牌</p>
+<p><img src="http://c.hiphotos.baidu.com/image/%70%69%63/item/03087bf40ad162d9104961971cdfa9ec8b13cd92.jpg" alt=""></p>
+<p>2、把令牌保存到环境变量中</p>
+<p><img src="http://c.hiphotos.baidu.com/image/%70%69%63/item/c2cec3fdfc0392455c0ae2848a94a4c27c1e25f9.jpg" alt=""></p>
+<p>3、在需要令牌的接口上设置 authorzation</p>
+<p><img src="http://f.hiphotos.baidu.com/image/%70%69%63/item/63d9f2d3572c11df4c72bca86e2762d0f603c29e.jpg" alt=""></p>
+<p>这时就可以正常的访问令牌了。</p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/\ws3.sinaimg.cn/large/005BYqpgly1fyybtcomtyj308p08ljsn.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/1950196171">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="http://www.nbplus.wang">王震骡</a></span>
+        <span>/</span>
+        
+        <span><a href="http://blog.xuruochen.cn">XRC</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
